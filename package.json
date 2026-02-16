@@ -48,6 +48,7 @@
     "@vaadin/hilla-generator-utils": "25.0.5",
     "@vitejs/plugin-react": "5.1.2",
     "magic-string": "0.30.21",
+    "prettier": "3.3.3",
     "rollup-plugin-brotli": "3.1.0",
     "rollup-plugin-visualizer": "6.0.5",
     "strip-css-comments": "5.0.0",
@@ -55,8 +56,7 @@
     "typescript": "5.9.3",
     "vite": "7.3.1",
     "vite-plugin-checker": "0.12.0",
-    "workbox-build": "7.4.0",
-    "prettier": "3.3.3"
+    "workbox-build": "7.4.0"
   },
   "vaadin": {
     "dependencies": {
@@ -114,7 +114,7 @@
       "vite-plugin-checker": "0.12.0",
       "workbox-build": "7.4.0"
     },
-    "hash": "80893a64ca12705e542b7767e120e4d1d3fab2715c10a31cb2d265c83ed86671"
+    "hash": "14c6056a900a46ed1a80633d240e64a358b0e39d705d51f26b72b385f3dc6647"
   },
   "overrides": {
     "@vaadin/vaadin-development-mode-detector": "$@vaadin/vaadin-development-mode-detector",
