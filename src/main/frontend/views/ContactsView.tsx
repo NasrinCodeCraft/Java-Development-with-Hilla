@@ -10,15 +10,18 @@ export const config: ViewConfig = { menu: { order: 2, icon: 'line-awesome/svg/us
 
 export default function ContactsView() {
     const [selected, setSelected] = useState<Contact | null>();
+    const [updateCount, setUpdateCount] = useState(0);
 
     async function onSubmit(contact: Contact) {
         const saved = await ContactService.save(contact);
         setSelected(saved);
+        setUpdateCount(updateCount + 1);
     }
 
     return (
         <div className="p-m">
             <AutoGrid
+                key={updateCount + 1}
                 service={ContactService}
                 model={ContactModel}
                 onActiveItemChanged={e => setSelected(e.detail.value)}
