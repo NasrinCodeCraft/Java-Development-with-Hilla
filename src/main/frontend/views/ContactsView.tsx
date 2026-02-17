@@ -2,7 +2,7 @@ import { ViewConfig } from '@vaadin/hilla-file-router/types.js';
 import {AutoGrid} from "@vaadin/hilla-react-crud";
 import {ContactService} from "Frontend/generated/endpoints";
 import ContactModel from "Frontend/generated/com/example/application/data/ContactModel";
-import {useState} from "react";
+import {useEffect, useState} from "react";
 import Contact from "Frontend/generated/com/example/application/data/Contact";
 import ContactFrom from "Frontend/components/ContactFrom";
 
@@ -11,12 +11,18 @@ export const config: ViewConfig = { menu: { order: 2, icon: 'line-awesome/svg/us
 export default function ContactsView() {
     const [selected, setSelected] = useState<Contact | null>();
     const [updateCount, setUpdateCount] = useState(0);
-
+    const [names, setNames] = useState<string[]>([]);
     async function onSubmit(contact: Contact) {
         const saved = await ContactService.save(contact);
         setSelected(saved);
         setUpdateCount(updateCount + 1);
     }
+
+    useEffect(() => {
+        ContactService.getNames().onNext(name => {
+            setNames(previous => [...previous, name]);
+        });
+    }, [])
 
     return (
         <div className="p-m">
@@ -27,7 +33,9 @@ export default function ContactsView() {
                 onActiveItemChanged={e => setSelected(e.detail.value)}
                 selectedItems={[selected]}
             />
-
+            <ul>
+                {names.map(name => <li key={name}>{name}</li>)}
+            </ul>
             {selected && <ContactFrom contact={selected} onSubmit={onSubmit} />}
 
         </div>

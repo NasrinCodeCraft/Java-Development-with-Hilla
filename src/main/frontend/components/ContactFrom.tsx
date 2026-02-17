@@ -12,7 +12,7 @@ interface ContactFromProps {
 
 export default function ContactFrom({contact, onSubmit}: ContactFromProps) {
 
-    const {field, model, submit, read} = useForm(ContactModel, {onSubmit});
+    const {field, model, submit, read, invalid} = useForm(ContactModel, {onSubmit});
 
     useEffect(() => {
         read(contact)
@@ -24,7 +24,7 @@ export default function ContactFrom({contact, onSubmit}: ContactFromProps) {
             <TextField label="Last name" {...field(model.lastName)}/>
             <TextField label="Email" {...field(model.email)}/>
             <TextField label="Phone" {...field(model.phone)}/>
-            <Button onClick={submit} theme={"primary"}>Saved</Button>
+            <Button onClick={submit} theme="primary" disabled={invalid}>Saved</Button>
         </div>
     )
 };
