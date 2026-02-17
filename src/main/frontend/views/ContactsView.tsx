@@ -4,10 +4,17 @@ import {ContactService} from "Frontend/generated/endpoints";
 import ContactModel from "Frontend/generated/com/example/application/data/ContactModel";
 import {useState} from "react";
 import Contact from "Frontend/generated/com/example/application/data/Contact";
+import ContactFrom from "Frontend/components/ContactFrom";
+
 export const config: ViewConfig = { menu: { order: 2, icon: 'line-awesome/svg/user.svg'}, title: 'Contact' };
 
 export default function ContactsView() {
     const [selected, setSelected] = useState<Contact | null>();
+
+    async function onSubmit(contact: Contact) {
+        const saved = await ContactService.save(contact);
+        setSelected(saved);
+    }
 
     return (
         <div className="p-m">
@@ -18,7 +25,7 @@ export default function ContactsView() {
                 selectedItems={[selected]}
             />
 
-            {selected?.firstName}
+            {selected && <ContactFrom contact={selected} onSubmit={onSubmit} />}
 
         </div>
     );
