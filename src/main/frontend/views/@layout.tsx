@@ -25,28 +25,31 @@ export default function MainLayout() {
 
   return (
     <AppLayout primarySection="drawer">
-      <div slot="drawer" className="flex flex-col justify-between h-full p-m">
-        <header className="flex flex-col gap-m">
-          <span className="font-semibold text-l">address-book</span>
-          <SideNav onNavigate={({ path }) => navigate(path!)} location={location}>
-            {createMenuItems().map(({ to, title, icon }) => (
-              <SideNavItem path={to} key={to}>
-                {icon ? <Icon src={icon} slot="prefix"></Icon> : <></>}
-                {title}
-              </SideNavItem>
-            ))}
-          </SideNav>
-        </header>
-      </div>
 
-      <DrawerToggle slot="navbar" aria-label="Menu toggle"></DrawerToggle>
-      <h1 slot="navbar" className="text-l m-0">
-        {documentTitleSignal}
-      </h1>
+       <h1 className="p-m">Hello world</h1>
 
-      <Suspense>
-        <Outlet />
-      </Suspense>
+      {/*<div slot="drawer" className="flex flex-col justify-between h-full p-m">*/}
+      {/*  <header className="flex flex-col gap-m">*/}
+      {/*    <span className="font-semibold text-l">address-book</span>*/}
+      {/*    <SideNav onNavigate={({ path }) => navigate(path!)} location={location}>*/}
+      {/*      {createMenuItems().map(({ to, title, icon }) => (*/}
+      {/*        <SideNavItem path={to} key={to}>*/}
+      {/*          {icon ? <Icon src={icon} slot="prefix"></Icon> : <></>}*/}
+      {/*          {title}*/}
+      {/*        </SideNavItem>*/}
+      {/*      ))}*/}
+      {/*    </SideNav>*/}
+      {/*  </header>*/}
+      {/*</div>*/}
+
+      {/*<DrawerToggle slot="navbar" aria-label="Menu toggle"></DrawerToggle>*/}
+      {/*<h1 slot="navbar" className="text-l m-0">*/}
+      {/*  {documentTitleSignal}*/}
+      {/*</h1>*/}
+
+      {/*<Suspense>*/}
+      {/*  <Outlet />*/}
+      {/*</Suspense>*/}
     </AppLayout>
   );
 }
